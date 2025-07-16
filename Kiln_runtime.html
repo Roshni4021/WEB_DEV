@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MK Running Table</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f8f8;
+    }
+
+    header {
+      background: #5145bf;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+    }
+
+    header h2 {
+      margin: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .outer-box {
+      border: 2px solid rgb(24, 21, 21);
+      display: flex;
+      gap: 8px;
+      padding: 8px;
+      width: fit-content;
+      background: white;
+      margin-left: 10px;
+    }
+
+    .legend-inner {
+      border: 1px solid rgb(35, 31, 31);
+      display: flex;
+      align-items: center;
+      padding: 6px 10px;
+      font-size: 13px;
+      background-color: white;
+    }
+
+    .color-box {
+      width: 16px;
+      height: 16px;
+      margin-right: 8px;
+      border: 1px solid #555;
+    }
+
+    .green {
+      background-color: #06FF00;
+    }
+
+    .orange {
+      background-color: #FF8E00;
+    }
+
+    .red {
+      background-color: #ff0000;
+      color: white;
+    }
+
+    .gray {
+      background-color: #c1d5ed;
+    }
+
+    .vertical-header {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    .scale-wrapper {
+      transform: scale(0.65);
+      transform-origin: top left;
+      width: 153.84%;
+      overflow: hidden;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      table-layout: fixed;
+    }
+
+    th,
+    td {
+      border: 1px solid #ccc;
+      text-align: center;
+      font-size: 11px;
+      padding: 2px;
+      min-width: 30px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 768px) {
+      .scale-wrapper {
+        transform: scale(0.60);
+        width: 166.66%;
+      }
+
+      th,
+      td {
+        font-size: 9px;
+        padding: 1px;
+        min-width: 28px;
+      }
+
+      .legend-inner {
+        font-size: 11px;
+        padding: 4px 6px;
+      }
+
+      header h2 {
+        font-size: 16px;
+      }
+
+      nav a {
+        font-size: 11px;
+      }
+    }
+
+    th {
+      background-color: #597bf4;
+      color: black;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h2>Kiln Runtime Chart</h2>
+    <nav><a href="Kiln_shutdown.html">Go to Kiln Shutdown</a></nav>
+  </header>
+
+  <br />
+  <div class="outer-box">
+    <div class="legend-inner">
+      <div class="color-box red"></div>
+      NO_DEMAND
+    </div>
+    <div class="legend-inner">
+      <div class="color-box orange"></div>
+      ACTUAL RUNNING MINS &lt; 30
+    </div>
+    <div class="legend-inner">
+      <div class="color-box green"></div>
+      ACTUAL RUNNING MINS &gt;= 30
+    </div>
+  </div>
+
+  <br />
+  <div class="scale-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Prod. Rate</th>
+          <th>Plan</th>
+          <th>Running Hrs</th>
+          <th>
+            <div class="vertical-header">8<br>to<br>9</div>
+          </th>
+          <th>
+            <div class="vertical-header">9<br>to<br>10</div>
+          </th>
+          <th>
+            <div class="vertical-header">10<br>to<br>11</div>
+          </th>
+          <th>
+            <div class="vertical-header">11<br>to<br>12</div>
+          </th>
+          <th>
+            <div class="vertical-header">12<br>to<br>13</div>
+          </th>
+          <th>
+            <div class="vertical-header">13<br>to<br>14</div>
+          </th>
+          <th>
+            <div class="vertical-header">14<br>to<br>15</div>
+          </th>
+          <th>
+            <div class="vertical-header">15<br>to<br>16</div>
+          </th>
+          <th>
+            <div class="vertical-header">16<br>to<br>17</div>
+          </th>
+          <th>
+            <div class="vertical-header">17<br>to<br>18</div>
+          </th>
+          <th>
+            <div class="vertical-header">18<br>to<br>19</div>
+          </th>
+          <th>
+            <div class="vertical-header">19<br>to<br>20</div>
+          </th>
+          <th>
+            <div class="vertical-header">20<br>to<br>21</div>
+          </th>
+          <th>
+            <div class="vertical-header">21<br>to<br>22</div>
+          </th>
+          <th>
+            <div class="vertical-header">22<br>to<br>23</div>
+          </th>
+          <th>
+            <div class="vertical-header">23<br>to<br>24</div>
+          </th>
+          <th>
+            <div class="vertical-header">00<br>to<br>01</div>
+          </th>
+          <th>
+            <div class="vertical-header">01<br>to<br>02</div>
+          </th>
+          <th>
+            <div class="vertical-header">02<br>to<br>03</div>
+          </th>
+          <th>
+            <div class="vertical-header">03<br>to<br>04</div>
+          </th>
+          <th>
+            <div class="vertical-header">04<br>to<br>05</div>
+          </th>
+          <th>
+            <div class="vertical-header">05<br>to<br>06</div>
+          </th>
+          <th>
+            <div class="vertical-header">06<br>to<br>07</div>
+          </th>
+          <th>
+            <div class="vertical-header">07<br>to<br>08</div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>MK#1</td>
+          <td>260</td>
+          <td>197.93</td>
+          <td>21</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="red"></td>
+          <td class="red"></td>
+          <td class="red">
+          <td colspan="18"></td>
+        </tr>
+        <tr class="gray">
+          <td>Actual</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="green">39</td>
+          <td class="orange">0</td>
+          <td class="orange">0</td>
+          <td class="orange">2</td>
+          <td class="green">34</td>
+          <td class="green">58</td>
+          <td class="green">45</td>
+          <td class="orange">0</td>
+          <td colspan="16"></td>
+        </tr>
+
+        <tr>
+          <td>MK#2</td>
+          <td>260</td>
+          <td>197.93</td>
+          <td>21</td>
+          <td class="red"></td>
+          <td class="red"></td>
+          <td class="red">
+          <td colspan="21"></td>
+        </tr>
+        <tr class="gray">
+          <td>Actual</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="green">59</td>
+          <td class="green">51</td>
+          <td class="green">60</td>
+          <td class="green">59</td>
+          <td class="green">54</td>
+          <td class="green">60</td>
+          <td class="green">49</td>
+          <td class="orange">0</td>
+          <td colspan="16"></td>
+        </tr>
+
+        <tr>
+          <td>MK#3</td>
+          <td>260</td>
+          <td>197.93</td>
+          <td>21</td>
+          <td class="red"></td>
+          <td class="red"></td>
+          <td class="red">
+          <td colspan="21"></td>
+        </tr>
+        <tr class="gray">
+          <td>Actual</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="green">57</td>
+          <td class="green">37</td>
+          <td class="green">58</td>
+          <td class="green">68</td>
+          <td class="green">68</td>
+          <td class="green">47</td>
+          <td class="green">50</td>
+          <td class="orange">0</td>
+          <td colspan="16"></td>
+        </tr>
+
+        <tr>
+          <td>MK#4</td>
+          <td>260</td>
+          <td>197.93</td>
+          <td>21</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="red"></td>
+          <td class="red"></td>
+          <td class="red"></td>
+          <td colspan="18"></td>
+        </tr>
+        <tr class="gray">
+          <td>Actual</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="green">69</td>
+          <td class="green">36</td>
+          <td class="green">60</td>
+          <td class="green">60</td>
+          <td class="green">60</td>
+          <td class="green">69</td>
+          <td class="green">60</td>
+          <td class="orange">10</td>
+          <td colspan="16"></td>
+        </tr>
+
+        <tr>
+          <td>MK#5</td>
+          <td>260</td>
+          <td>113.10</td>
+          <td>12</td>
+          <td class="red"></td>
+          <td class="red"></td>
+          <td class="red"></td>
+          <td class="red"></td>
+          <td class="red"></td>
+          <td class="red"></td>
+          <td class="red"></td>
+          <td class="red"></td>
+          <td class="red"></td>
+          <td class="red"></td>
+          <td class="red"></td>
+          <td class="red"></td>
+          <td colspan="12"></td>
+        </tr>
+        <tr class="gray">
+          <td>Actual</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="orange">0</td>
+          <td class="orange">0</td>
+          <td class="orange">0</td>
+          <td class="orange">0</td>
+          <td class="orange">0</td>
+          <td class="orange">0</td>
+          <td class="orange">0</td>
+          <td class="orange">0</td>
+          <td colspan="16"></td>
+        </tr>
+
+        <tr>
+          <td>MK#6</td>
+          <td>340</td>
+          <td>295.80</td>
+          <td>24</td>
+          <td colspan="24"></td>
+        </tr>
+        <tr class="gray">
+          <td>Actual</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="orange">26</td>
+          <td class="green">34</td>
+          <td class="green">58</td>
+          <td class="green">59</td>
+          <td class="green">59</td>
+          <td class="green">58</td>
+          <td class="orange">28</td>
+          <td class="orange">0</td>
+          <td colspan="16"></td>
+        </tr>
+
+        <tr>
+          <td>MK#7</td>
+          <td>340</td>
+          <td>258.83</td>
+          <td>21</td>
+          <td class="red"></td>
+          <td class="red"></td>
+          <td class="red"></td>
+          <td colspan="21"></td>
+        </tr>
+        <tr class="gray">
+          <td>Actual</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="green">42</td>
+          <td class="green">59</td>
+          <td class="green">58</td>
+          <td class="green">36</td>
+          <td class="green">59</td>
+          <td class="green">57</td>
+          <td class="green">53</td>
+          <td class="orange">0</td>
+          <td colspan="16"></td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td>1980</td>
+          <td>1458.45</td>
+          <td colspan="25"></td>
+        </tr>
+        <tr class="gray">
+          <td>No of</td>
+          <td>117</td>
+          <td>Expected</td>
+          <td>1548.53</td>
+          <td colspan="24"></td>
+        </tr>
+      </tbody>
+    </table>
+</body>
+
+</html>
+</tbody>
+</table>
+</div>
+</body>
+
+</html>

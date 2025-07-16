@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kiln Shutdown Priority</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f8f8;
+    }
+
+    header {
+      background: #5145bf;
+      color: white;
+      padding: 6px 10px;
+      text-align: center;
+    }
+
+    header h2 {
+      margin: 0;
+      font-size: 13px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 10px;
+    }
+
+    .outer-container {
+      border: 1px solid #bbb;
+      padding: 8px;
+      width: 96%;
+      background-color: #fff;
+      margin: 8px auto;
+    }
+
+    .legend-title {
+      font-weight: bold;
+      font-size: 11px;
+      margin-bottom: 4px;
+    }
+
+    .legend-tables {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      gap: 10px;
+    }
+
+    .legend-tables table {
+      font-size: 10px;
+      width: 49%;
+    }
+
+    .label-green {
+      background-color: #318a22;
+      color: white;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .label-red {
+      background-color: #ff0000;
+      color: white;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 9px;
+      table-layout: fixed;
+    }
+
+    th,
+    td {
+      border: 1px solid #ccc;
+      padding: 4px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+
+    .blue-box {
+      background-color: #597bf4;
+      color: white;
+      font-weight: bold;
+      font-size: 9px;
+      padding: 4px;
+    }
+
+    .green-box,
+    .red-box {
+      color: white;
+      font-weight: bold;
+      padding: 3px;
+      font-size: 8px;
+      width: 100%;
+    }
+
+    .green-box {
+      background-color: #318a22;
+    }
+
+    .red-box {
+      background-color: #ff0000;
+    }
+
+    .status-cell {
+      display: flex;
+      gap: 2px;
+      justify-content: center;
+      flex-wrap: nowrap;
+    }
+
+    .number-cell {
+      background-color: #597bf4;
+      color: white;
+      font-weight: bold;
+      padding: 4px;
+      font-size: 9px;
+    }
+
+    textarea {
+      background-color: #597bf4;
+      color: white;
+      width: 100%;
+      min-height: 30px;
+      font-size: 8px;
+      font-family: Arial, sans-serif;
+      padding: 4px;
+      box-sizing: border-box;
+
+    }
+
+    textarea:focus {
+      outline: 2px solid #597bf4;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h2>Kiln Shutdown Priority For 4/4/2025 3:26:45 PM</h2>
+    <nav><a href="Kiln_runtime.html">Go to Kiln Runtime Chart</a></nav>
+  </header>
+
+  <div class="outer-container">
+    <div class="legend-title">LEGENDS
+      <hr />
+    </div>
+    <div class="legend-tables">
+      <table>
+        <tr>
+          <td class="label-green">Temperature</td>
+          <td>Last Hr. Av Temp &gt; Assigned value</td>
+        </tr>
+        <tr>
+          <td class="label-green">Last running</td>
+          <td>More than 20 hrs running in last 48 Hrs.</td>
+        </tr>
+        <tr>
+          <td class="label-green">Pending PSD</td>
+          <td>PSD Planned in next 36 hrs.</td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td class="label-red">Temperature</td>
+          <td>Last Hr. Av Temp &lt; Assigned value</td>
+        </tr>
+        <tr>
+          <td class="label-red">Last running</td>
+          <td>Less than 20 hrs running in last 48 Hrs.</td>
+        </tr>
+        <tr>
+          <td class="label-red">Pending PSD</td>
+          <td>PSD Not Planned in next 36 hrs.</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <br>
+
+  <table>
+    <tr>
+      <th>KILN NO</th>
+      <th>PARAMETER STATUS</th>
+      <th>NO DEMAND</th>
+      <th>PRIORITY</th>
+      <th>SHUTDOWN PRIORITY</th>
+    </tr>
+
+    <tr>
+      <td>
+        <div class="blue-box">MK1</div>
+      </td>
+      <td class="status-cell">
+        <div class="green-box">Temperature</div>
+        <div class="red-box">Last Running</div>
+        <div class="red-box">Pending PSD</div>
+      </td>
+      <td>
+        <div class="number-cell">3</div>
+      </td>
+      <td>
+        <div class="number-cell">7</div>
+      </td>
+      <td><textarea></textarea></td>
+    </tr>
+
+    <tr>
+      <td>
+        <div class="blue-box">MK2</div>
+      </td>
+      <td class="status-cell">
+        <div class="green-box">Temperature</div>
+        <div class="green-box">Last Running</div>
+        <div class="green-box">Pending PSD</div>
+      </td>
+      <td>
+        <div class="number-cell">3</div>
+      </td>
+      <td>
+        <div class="number-cell">1</div>
+      </td>
+      <td><textarea>Kiln2 will go to shutdown before Kiln1</textarea></td>
+    </tr>
+
+    <tr>
+      <td>
+        <div class="blue-box">MK3</div>
+      </td>
+      <td class="status-cell">
+        <div class="green-box">Temperature</div>
+        <div class="green-box">Last Running</div>
+        <div class="red-box">Pending PSD</div>
+      </td>
+      <td>
+        <div class="number-cell">3</div>
+      </td>
+      <td>
+        <div class="number-cell">3</div>
+      </td>
+      <td><textarea>Kiln3 will go to shutdown before Kiln4</textarea></td>
+    </tr>
+
+    <tr>
+      <td>
+        <div class="blue-box">MK4</div>
+      </td>
+      <td class="status-cell">
+        <div class="green-box">Temperature</div>
+        <div class="green-box">Last Running</div>
+        <div class="green-box">Pending PSD</div>
+      </td>
+      <td>
+        <div class="number-cell">3</div>
+      </td>
+      <td>
+        <div class="number-cell">7</div>
+      </td>
+      <td><textarea></textarea></td>
+    </tr>
+
+    <tr>
+      <td>
+        <div class="blue-box">MK5</div>
+      </td>
+      <td class="status-cell">
+        <div class="green-box">Temperature</div>
+        <div class="red-box">Last Running</div>
+        <div class="red-box">Pending PSD</div>
+      </td>
+      <td>
+        <div class="number-cell">12</div>
+      </td>
+      <td>
+        <div class="number-cell">5</div>
+      </td>
+      <td><textarea></textarea></td>
+    </tr>
+
+    <tr>
+      <td>
+        <div class="blue-box">MK6</div>
+      </td>
+      <td class="status-cell">
+        <div class="green-box">Temperature</div>
+        <div class="red-box">Last Running</div>
+        <div class="red-box">Pending PSD</div>
+      </td>
+      <td>
+        <div class="number-cell">0</div>
+      </td>
+      <td>
+        <div class="number-cell">6</div>
+      </td>
+      <td><textarea></textarea></td>
+    </tr>
+
+    <tr>
+      <td>
+        <div class="blue-box">MK7</div>
+      </td>
+      <td class="status-cell">
+        <div class="green-box">Temperature</div>
+        <div class="green-box">Last Running</div>
+        <div class="red-box">Pending PSD</div>
+      </td>
+      <td>
+        <div class="number-cell">3</div>
+      </td>
+      <td>
+        <div class="number-cell">4</div>
+      </td>
+      <td><textarea></textarea></td>
+    </tr>
+  </table>
+
+  <br />
+</body>
+
+</html>
